@@ -40,4 +40,11 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<UserEvent> userEvents;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Resource> resources;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Rating> ratings;
+
 }
