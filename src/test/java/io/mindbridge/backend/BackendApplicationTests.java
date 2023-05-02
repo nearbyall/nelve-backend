@@ -1,6 +1,10 @@
 package io.mindbridge.backend;
 
+import io.mindbridge.backend.persistence.SkillRepository;
+import io.mindbridge.backend.persistence.entity.Skill;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
@@ -12,6 +16,9 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.util.Optional;
+
+import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 /**
@@ -25,6 +32,11 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 public class BackendApplicationTests {
 
     private static final String DATABASE_NAME = "test";
+
+    private Skill skill;
+
+    @Autowired
+    private SkillRepository skillRepository;
 
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:11.1")
