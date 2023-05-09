@@ -23,10 +23,6 @@ public class SkillController {
 
         Page<SkillDTO> result = skillService.getAll(page, size);
 
-        /*
-        vsjkaj huita
-         */
-
         return ResponseEntity.ok(result);
 
     }
